@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="98.504" height="83.822" viewBox="0 0 98.504 83.822">
+  <defs>
+    <filter id="Контур_2" x="0" y="1.121" width="81.579" height="81.579" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Контур_3" x="16.925" y="1.121" width="81.579" height="81.579" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Прямоугольник_11" x="7.341" y="0" width="83.822" height="83.822" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-3"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Сгруппировать_2" data-name="Сгруппировать 2" transform="translate(-298.748 -1.089)">
+    <g id="Сгруппировать_1" data-name="Сгруппировать 1">
+      <g transform="matrix(1, 0, 0, 1, 298.75, 1.09)" filter="url(#Контур_2)">
+        <path id="Контур_2-2" data-name="Контур 2" d="M0,0H46.543V46.543H0Z" transform="translate(32.27 7.12) rotate(30)" fill="#758eb1"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 298.75, 1.09)" filter="url(#Контур_3)">
+        <path id="Контур_3-2" data-name="Контур 3" d="M0,46.543H46.543V0H0Z" transform="translate(89.5 47.43) rotate(150)" fill="#758eb1"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 298.75, 1.09)" filter="url(#Прямоугольник_11)">
+        <rect id="Прямоугольник_11-2" data-name="Прямоугольник 11" width="46.543" height="46.543" transform="translate(49.25 6) rotate(45)" fill="#fff"/>
+      </g>
+    </g>
+    <path id="Контур_5" data-name="Контур 5" d="M25.5-.3s.068.119-.405.27S23.607.3,23.607.3a3.483,3.483,0,0,1-1.978-.495,5.157,5.157,0,0,1-1.247-1.183L15.265-8.3a10.927,10.927,0,0,0-2.645-2.731A6.724,6.724,0,0,0,9.5-11.868v-2.408h3.741a6.044,6.044,0,0,0,4.472-1.677,6.159,6.159,0,0,0,1.677-4.558A6.848,6.848,0,0,0,17.8-25.177,5.17,5.17,0,0,0,13.717-27H6.837V0H4.257s-.007-27,0-27a5.044,5.044,0,0,0-2.58-2.408H13.889a7.679,7.679,0,0,1,4.15,1.139,8.062,8.062,0,0,1,2.881,3.117,9.182,9.182,0,0,1,1.054,4.386,8.743,8.743,0,0,1-.9,4.042,8.721,8.721,0,0,1-2.15,2.8A5.466,5.466,0,0,1,16.6-12.685a8.752,8.752,0,0,1-1.7.107l-1.01-.021a4.042,4.042,0,0,1,2.365,1.591l1.72,2.365q.774,1.032,2.344,3.182T22.36-2.8A2.674,2.674,0,0,0,22.9-2.3a1.241,1.241,0,0,0,.667.151,1.284,1.284,0,0,0,.86-.258Z" transform="translate(334.748 55)" fill="#758eb1"/>
+  </g>
+</svg>
