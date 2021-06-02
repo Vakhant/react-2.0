@@ -1,8 +1,8 @@
-import './Content.css';
+import css from './Content.module.css';
 
 const Content = () => {
   return (
-    <div className="content">
+    <div className={css.content}>
       promo
       avatar
       comments

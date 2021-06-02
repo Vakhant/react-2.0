@@ -16,18 +16,22 @@ nav{
 }
 nav a.nav_block{
   color: #758EB1;
+  background-color: transparent;
+  box-shadow: 0 0 0 rgba(0,0,0,.15);
   text-decoration: none;
   max-width: 100%;
-  background-color: transparent;
   margin: 2px 0;
   padding: 10px;
   display: block;
   font-size: 24px;
-  box-shadow: 0 0 0 rgba(0,0,0,.15);
   font-family: 'Montserrat-Medium', sans-serif;
   transition: .3s;
 }
 nav a.nav_block:hover{
+  box-shadow: 0 3px 5px rgba(0,0,0,.15);
+  background-color: #fff;
+}
+nav a.nav_block.nav_block_active{
   box-shadow: 0 3px 5px rgba(0,0,0,.15);
   background-color: #fff;
 }
