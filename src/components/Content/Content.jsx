@@ -1,14 +1,10 @@
 import css from './Content.module.css';
+import Profile from './Profile/Profile';
 
 const Content = () => {
   return (
     <div className={css.content}>
-      promo
-      avatar
-      comments
-      <textarea name="" id="" cols="30" rows="10"></textarea>
-      <button>btn</button>
-      posts
+      <Profile/>
     </div>
   );
 }

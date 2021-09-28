@@ -6,13 +6,16 @@ import Content from './components/Content/Content';
 const App = () => {
   return (
     <div className="App">
+
       <Header/>
+
         <main>
           <div className="wrap">
             <Aside/>
             <Content/>
           </div>
         </main>
+
     </div>
   );
 }
