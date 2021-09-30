@@ -4,8 +4,8 @@ const Aside = () => {
   return (
     <aside>
       <nav>
-        <a className={css.nav_block} href="">Profile</a>
-        <a className={`${css.nav_block} ${css.nav_block_active}`} href="">Message</a>
+        <a className={css.nav_block} href="/profile">Profile</a>
+        <a className={`${css.nav_block} ${css.nav_block_active}`} href="/Dialogs">Dialogs</a>
         <a className={css.nav_block} href="">News</a>
         <a className={css.nav_block} href="">Music</a>
         <div className="hr"></div>

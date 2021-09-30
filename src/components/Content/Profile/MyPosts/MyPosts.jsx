@@ -13,8 +13,8 @@ const MyPosts = () => {
       <div className="posts_list">
         <Post likeCounts="4" message="abracadabraab"/>
         <Post likeCounts="15" message="abracadabraa"/>
-        <Post likeCounts="3" message="abracadabraa"/>
-        <Post likeCounts="11" message="abracadabraa"/>
+        <Post likeCounts="3" message="abracadabra"/>
+        <Post likeCounts="11" message="abracadabr"/>
       </div>
     </div>
   );
