@@ -1,19 +1,21 @@
+import DialogNavBlock from './DialogName/DialogNavBlock';
 import css from './Dialogs.module.css';
+import Message from './Message/Message';
 
 const Dialogs = () => {
   return (
     <div className={css.dialogs}>
       <div className={css.dialogs_list}>
-        <div className={css.dialogs_list_block}>Angela</div>
-        <div className={css.dialogs_list_block}>Sania</div>
-        <div className={css.dialogs_list_block}>Vasiania</div>
-        <div className={css.dialogs_list_block}>Tania</div>
-        <div className={css.dialogs_list_block}>Rita</div>
+        <DialogNavBlock to="/taras" name="Taras"/>
+        <DialogNavBlock to="/sania" name="Sania"/>
+        <DialogNavBlock to="/vasiania" name="Vasiania"/>
+        <DialogNavBlock to="/tania" name="Tania"/>
+        <DialogNavBlock to="/rita" name="Rita"/>
       </div>
       <div className={css.dialogs_messages_list}>
-        <div className={css.dialogs_messages_list_block}>Привет как дела</div>
-        <div className={css.dialogs_messages_list_block}>Как твое It</div>
-        <div className={css.dialogs_messages_list_block}>Еще не ахти?</div>
+        <Message messageText="Привет как дела" />
+        <Message messageText="Как твое It" />
+        <Message messageText="Еще не ахти?" />
       </div>
       
     </div>

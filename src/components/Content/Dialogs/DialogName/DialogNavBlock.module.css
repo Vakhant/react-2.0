@@ -1,0 +1,17 @@
+.dialogs_list_block{
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: .2s;
+    display: block;
+    text-decoration: none;
+    color: #758EB1;
+    font-family: 'Montserrat-Medium', sans-serif;
+}
+.dialogs_list_block::first-letter{
+    font-size: 1.3em;
+}
+
+.dialogs_list_block:hover{
+    background-color: #758EB1;
+    color: #fff;
+}

@@ -7,8 +7,6 @@ const Profile = () => {
       promo
       avatar
       comments
-      <textarea name="" id="" cols="30" rows="10"></textarea>
-      <button>btn</button>
       <MyPosts/>
     </>
   );
