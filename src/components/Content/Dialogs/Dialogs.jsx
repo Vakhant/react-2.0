@@ -3,19 +3,27 @@ import css from './Dialogs.module.css';
 import Message from './Message/Message';
 
 const Dialogs = () => {
+  let dialogsData = [
+    {id:"1", to:"/taras", name: "Taras"},
+    {id:"2", to:"/sania", name: "Sania"},
+    {id:"3", to:"/vasiania", name: "Vasiania"},
+    {id:"4", to:"/tania", name: "Tania"},
+    {id:"5", to:"/rita", name: "Rita"}
+  ]
+  let messagesData = [
+    {id: 1, messageText: "Привет как дела"},
+    {id: 2, messageText: "Как твое It"},
+    {id: 3, messageText: "Еще не ахти?"}
+  ]
+  let dialogsDataMap = dialogsData.map(dialog => <DialogNavBlock name={dialog.name} to={dialog.to} id={dialog.id}/>)
+  let messagesDataMap = messagesData.map(message => <Message messageText={message.messageText} id={message.id}/>)
   return (
     <div className={css.dialogs}>
       <div className={css.dialogs_list}>
-        <DialogNavBlock to="/taras" name="Taras"/>
-        <DialogNavBlock to="/sania" name="Sania"/>
-        <DialogNavBlock to="/vasiania" name="Vasiania"/>
-        <DialogNavBlock to="/tania" name="Tania"/>
-        <DialogNavBlock to="/rita" name="Rita"/>
+        {dialogsDataMap}
       </div>
       <div className={css.dialogs_messages_list}>
-        <Message messageText="Привет как дела" />
-        <Message messageText="Как твое It" />
-        <Message messageText="Еще не ахти?" />
+        {messagesDataMap}
       </div>
       
     </div>
