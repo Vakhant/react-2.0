@@ -8,7 +8,7 @@ const Profile = (props) => {
       promo
       avatar
       comments
-      <MyPosts state={props.state} addPost={props.addPost}/>
+      <MyPosts state={props.state} addPost={props.addPost}   updateNewPostText={props.updateNewPostText}/>
     </>
   );
 }

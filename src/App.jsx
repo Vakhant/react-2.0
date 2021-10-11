@@ -13,7 +13,7 @@ const App = (props) => {
         <main>
           <div className="wrap">
             <Aside/>
-            <Content state={props.state} addPost={props.addPost}/>
+            <Content state={props.state} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>
           </div>
         </main>
 

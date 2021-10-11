@@ -6,7 +6,7 @@
     font-size: 20px;
     margin-right: 20px;
     transition: .3s;
-    border-right: 1px solid #758EB150;
+    border-right: 2px solid #758EB150;
 }
 
 .dialogs_messages_list{

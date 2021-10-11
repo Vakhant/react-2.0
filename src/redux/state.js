@@ -7,7 +7,8 @@ const state = {
             {id: 2,likeCounts:15, message: "abracadabra"},
             {id: 3,likeCounts:3, message: "abracadabr"},
             {id: 4,likeCounts:11, message: "abracadab"}
-        ]
+        ],
+        newPostText: ''
     },
     dialogsPage: {
         dialogsData: [
@@ -26,9 +27,15 @@ const state = {
     sidebar: {}
 }
 
-export let addPost = (postMessage) => {
-    let newPost = {id:5, likeCounts: 25, message: postMessage};
+export let addPost = () => {
+    let newPost = {id:5, likeCounts: 25, message: state.profilePage.newPostText};
     state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = "";
+    rerenderEntierTree(state);
+  }
+
+  export let updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText;
     rerenderEntierTree(state);
   }
 
