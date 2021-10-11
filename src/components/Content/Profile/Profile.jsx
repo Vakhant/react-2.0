@@ -1,13 +1,14 @@
 import MyPosts from './MyPosts/MyPosts';
 import css from './Profile.module.css';
 
-const Profile = () => {
+const Profile = (props) => {
+  console.log(props.state)
   return (
     <>
       promo
       avatar
       comments
-      <MyPosts/>
+      <MyPosts state={props.state} addPost={props.addPost}/>
     </>
   );
 }

@@ -2,9 +2,8 @@ import './App.css';
 import Header from './components/Header/Header';
 import Aside from './components/Aside/Aside';
 import Content from './components/Content/Content';
-import { BrowserRouter } from 'react-router-dom';
 
-const App = () => {
+const App = (props) => {
   return (
 
     <div className="App">
@@ -14,7 +13,7 @@ const App = () => {
         <main>
           <div className="wrap">
             <Aside/>
-            <Content/>
+            <Content state={props.state} addPost={props.addPost}/>
           </div>
         </main>
 

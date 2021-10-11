@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import DialogNavBlock from './DialogName/DialogNavBlock';
 import css from './Dialogs.module.css';
 import Message from './Message/Message';
 
-const Dialogs = () => {
+const Dialogs = (props) => {
   let dialogsData = [
     {id:"1", to:"/taras", name: "Taras"},
     {id:"2", to:"/sania", name: "Sania"},
@@ -15,8 +16,9 @@ const Dialogs = () => {
     {id: 2, messageText: "Как твое It"},
     {id: 3, messageText: "Еще не ахти?"}
   ]
-  let dialogsDataMap = dialogsData.map(dialog => <DialogNavBlock name={dialog.name} to={dialog.to} id={dialog.id}/>)
-  let messagesDataMap = messagesData.map(message => <Message messageText={message.messageText} id={message.id}/>)
+
+  let dialogsDataMap = props.state.dialogsData.map(dialog => <DialogNavBlock name={dialog.name} to={dialog.to} id={dialog.id}/>)
+  let messagesDataMap = props.state.messagesData.map(message => <Message messageText={message.messageText} id={message.id}/>)
   return (
     <div className={css.dialogs}>
       <div className={css.dialogs_list}>

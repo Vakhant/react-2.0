@@ -3,21 +3,18 @@ import logo from '../../../../src/img/avatar.svg';
 import css from './MyPosts.module.css';
 import Post from './Post/Post';
 
-const MyPosts = () => {
-  let postsData = [
-    {id: 1,likeCounts:4, message: "abracadabraa"},
-    {id: 2,likeCounts:15, message: "abracadabra"},
-    {id: 3,likeCounts:3, message: "abracadabr"},
-    {id: 4,likeCounts:11, message: "abracadab"}
-  ]
-  let postsDataMap = postsData.map(post => <Post name={post.likeCounts} to={post.message} id={post.id}/>)
+const MyPosts = (props) => {
+  console.log(props.state);
+  let postsDataMap = props.state.posts.map(post => <Post name={post.likeCounts} message={post.message} to={post.message} id={post.id}/>)
   let newPostElement = React.createRef();
   let addPost = () => {
-    let newPost = {id:5, likeCounts: 25, message: "new"};
-    postsData.push(newPost);
     let text = newPostElement.current.value;
-    console.log(text);
+    props.addPost(text);
+    newPostElement.current.value = "";
   }
+  // let onPostChange = () =>{
+
+  // }
   return (
     <div>
         MyPosts
@@ -31,5 +28,5 @@ const MyPosts = () => {
     </div>
   );
 }
-
+  
 export default MyPosts;
