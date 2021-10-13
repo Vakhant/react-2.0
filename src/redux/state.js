@@ -1,12 +1,14 @@
-import { rerenderEntierTree } from "../rerender";
+let rerenderEntierTree = () => {
+    console.log("State changed");
+}
 
 const state = {
     profilePage: {
         posts: [
-            {id: 1,likeCounts:4, message: "abracadabraa"},
-            {id: 2,likeCounts:15, message: "abracadabra"},
-            {id: 3,likeCounts:3, message: "abracadabr"},
-            {id: 4,likeCounts:11, message: "abracadab"}
+            {id: 1, likeCounts:4, message: "abracadabraa"},
+            {id: 2, likeCounts:15, message: "abracadabra"},
+            {id: 3, likeCounts:3, message: "abracadabr"},
+            {id: 4, likeCounts:11, message: "abracadab"}
         ],
         newPostText: ''
     },
@@ -27,16 +29,20 @@ const state = {
     sidebar: {}
 }
 
-export let addPost = () => {
+export const addPost = () => {
     let newPost = {id:5, likeCounts: 25, message: state.profilePage.newPostText};
     state.profilePage.posts.push(newPost);
     state.profilePage.newPostText = "";
     rerenderEntierTree(state);
   }
 
-  export let updateNewPostText = (newText) => {
+  export const updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText;
     rerenderEntierTree(state);
+  }
+
+  export const subscriber = (observer) => {
+    rerenderEntierTree = observer; //паттерн - observer
   }
 
 export default state;
