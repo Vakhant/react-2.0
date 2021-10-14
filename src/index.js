@@ -1,5 +1,5 @@
 import './index.css';
-import state, { addPost, subscriber, updateNewPostText} from './redux/state';
+import store from './redux/state';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -8,11 +8,11 @@ import { BrowserRouter } from 'react-router-dom';;
 
 let rerenderEntierTree = (state) => {ReactDOM.render( 
     <BrowserRouter>
-        <App state={state}  addPost={addPost} updateNewPostText={updateNewPostText}/>
+        <App state={state}  addPost={store.addPost.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)}/>
     </BrowserRouter>, document.getElementById('root')
     );
 }
 
-subscriber(rerenderEntierTree);
+rerenderEntierTree(store.getState());
 
-rerenderEntierTree(state);
+store.subscriber(rerenderEntierTree);
