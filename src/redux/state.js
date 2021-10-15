@@ -25,24 +25,25 @@ let store = {
         },
         sidebar: {}
     },
-    getState(){
-        return this._state;
-    },
     _callSubscriber(){
         console.log("State changed");
     },
-    addPost(){
-        let newPost = {id:5, likeCounts: 25, message: this._state.profilePage.newPostText};
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = "";
-        this._callSubscriber(this._state);
-      },
-      updateNewPostText(newText){
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state);
-      },
-      subscriber(observer){
-        this._callSubscriber = observer; //паттерн - observer
+    getState(){
+        return this._state;
+    },
+    subscriber(observer){
+      this._callSubscriber = observer; //паттерн - observer
+    },
+      dispatch(action){
+        if(action.type === 'ADD-POST'){
+            let newPost = {id:5, likeCounts: 25, message: this._state.profilePage.newPostText};
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText = "";
+            this._callSubscriber(this._state);
+        }else if(action.type === 'UPDATE-NEW-POST-TEXT'){
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        }
       }
 }
 

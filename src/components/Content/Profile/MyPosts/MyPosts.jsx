@@ -5,15 +5,16 @@ import Post from './Post/Post';
 
 const MyPosts = (props) => {
   console.log(props.state);
-  let postsDataMap = props.state.posts.map(post => <Post name={post.likeCounts} message={post.message} to={post.message} id={post.id}/>)
+  let postsDataMap = props.state.posts.map(post => <Post likeCounts={post.likeCounts} message={post.message} to={post.message} id={post.id}/>)
   let newPostElement = React.createRef();
   let addPost = () => {
     let text = newPostElement.current.value;
-    props.addPost(text);
+    props.dispatch({type: 'ADD-POST'});
   }
   let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.updateNewPostText(text);
+    let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};
+    props.dispatch(action);
   }
 
   // let onPostChange = () =>{

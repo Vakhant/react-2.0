@@ -1,0 +1,11 @@
+.post{
+    display: flex;
+    flex-direction: column;
+}
+.post button{
+    background-color: #758EB1;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 10px 0;
+    box-shadow: 0 0 10px rgb(0 0 0 / 15%);
+}
