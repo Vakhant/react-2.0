@@ -6,7 +6,7 @@ import Profile from './Profile/Profile';
 const Content = (props) => {
   return (
       <div className={css.content}>
-        <Route path="/dialogs" render={() => <Dialogs state={props.state.dialogsPage}/>}/>
+        <Route path="/dialogs" render={() => <Dialogs state={props.state.dialogsPage}  store={props.store}/>}/>
         <Route path="/profile" render={() => <Profile state={props.state.profilePage} dispatch={props.dispatch}/>}/>
       </div>
   );

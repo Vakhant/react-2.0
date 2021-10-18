@@ -13,7 +13,7 @@ const App = (props) => {
         <main>
           <div className="wrap">
             <Aside/>
-            <Content state={props.state} dispatch={props.dispatch}/>
+            <Content state={props.state} dispatch={props.dispatch} store={props.store}/>
           </div>
         </main>
 
