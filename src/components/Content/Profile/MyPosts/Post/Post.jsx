@@ -9,6 +9,7 @@ const Post = (props) => {
             </div>
             <div>post {props.id}</div>
             <div>{props.message}</div>
+            <div className={css.post_nav}></div>
             <div><button>like {props.likeCounts}</button></div>
             <div><button>dislike</button></div>
             
