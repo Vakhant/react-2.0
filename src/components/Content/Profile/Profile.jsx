@@ -1,14 +1,14 @@
-import MyPosts from './MyPosts/MyPosts';
+import MyPostsContainer from './MyPosts/MyPostsContainer';
 import css from './Profile.module.css';
 
 const Profile = (props) => {
-  console.log(props.state)
   return (
     <>
       promo
       avatar
       comments
-      <MyPosts state={props.state} dispatch={props.dispatch}/>
+      <MyPostsContainer store={props.store}
+      />
     </>
   );
 }

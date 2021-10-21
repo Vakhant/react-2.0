@@ -5,16 +5,14 @@ import css from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
-  console.log(props.state);
-  let postsDataMap = props.state.posts.map(post => <Post likeCounts={post.likeCounts} message={post.message} to={post.message} id={post.id}/>)
+  let postsDataMap = props.posts.map(post => <Post likeCounts={post.likeCounts} message={post.message} to={post.message} id={post.id}/>)
   let newPostElement = React.createRef();
   let addPost = () => {
-    props.dispatch(addPostActionCreator());
+    props.addPost();
   }
   let onPostChange = () => {
     let text = newPostElement.current.value;
-    let action = updateNewPostTextActionCreator(text)
-    props.dispatch(action);
+    props.updateNewPostText(text);
   }
 
   // let onPostChange = () =>{
@@ -24,7 +22,7 @@ const MyPosts = (props) => {
     <div>
         MyPosts
         <div>
-            <textarea onChange={onPostChange} ref={newPostElement} className={css.addpost_text_area} value={props.state.newPostText}></textarea>
+            <textarea onChange={onPostChange} ref={newPostElement} className={css.addpost_text_area} value={props.newPostText}></textarea>
         </div>
         <div><button onClick={addPost}>Add post</button></div>
       <div className="posts_list">

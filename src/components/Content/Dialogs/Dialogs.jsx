@@ -5,29 +5,17 @@ import css from './Dialogs.module.css';
 import Message from './Message/Message';
 
 const Dialogs = (props) => {
-  let state = props.store.getState().dialogsPage;
-  let dialogsData = [
-    {id:"1", to:"/taras", name: "Taras"},
-    {id:"2", to:"/sania", name: "Sania"},
-    {id:"3", to:"/vasiania", name: "Vasiania"},
-    {id:"4", to:"/tania", name: "Tania"},
-    {id:"5", to:"/rita", name: "Rita"}
-  ]
-  let messagesData = [
-    {id: 1, messageText: "Привет как дела"},
-    {id: 2, messageText: "Как твое It"},
-    {id: 3, messageText: "Еще не ахти?"}
-  ]
+  let state = props.state;
 
   let dialogsDataMap = props.state.dialogsData.map(dialog => <DialogNavBlock name={dialog.name} to={dialog.to} id={dialog.id}/>)
   let messagesDataMap = props.state.messagesData.map(message => <Message messageText={message.messageText} id={message.id}/>)
   let newMessageBody = props.state.newMessageBody;
   let onMessageClick = (e) => {
-    props.store.dispatch(sendMessageCreator())
+    props.onMessageClick();
   }
   let onNewMessageChange = (e) => {
     let body = e.target.value;
-    props.store.dispatch(updateNewMessageBodyCreator(body))
+    props.onNewMessageChange(body);
   }
   return (
     <div className={css.dialogs}>
