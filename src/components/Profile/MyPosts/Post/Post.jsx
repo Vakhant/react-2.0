@@ -1,4 +1,4 @@
-import logo from '../../../../../src/img/avatar.svg';
+import logo from '../../../../../src/src/img/avatar.svg';
 import css from './Post.module.css';
 
 const Post = (props) => {

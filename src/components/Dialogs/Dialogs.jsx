@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { sendMessageCreator, updateNewMessageBodyCreator } from '../../../redux/dialogs-reducer';
 import DialogNavBlock from './DialogName/DialogNavBlock';
 import css from './Dialogs.module.css';
 import Message from './Message/Message';

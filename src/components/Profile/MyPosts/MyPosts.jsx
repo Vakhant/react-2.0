@@ -1,6 +1,4 @@
 import React from 'react';
-import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../../redux/profile-reducer';
-import logo from '../../../../src/img/avatar.svg';
 import css from './MyPosts.module.css';
 import Post from './Post/Post';
 

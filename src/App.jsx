@@ -1,7 +1,10 @@
-import './App.css';
+import css from './App.module.css';
 import Header from './components/Header/Header';
 import Aside from './components/Aside/Aside';
-import Content from './components/Content/Content';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
+import Profile from './components/Profile/Profile';
+import { Route } from 'react-router';
+import UsersContainer from './components/Users/UsersContainer';
 
 const App = (props) => {
   return (
@@ -13,7 +16,11 @@ const App = (props) => {
         <main>
           <div className="wrap">
             <Aside/>
-            <Content state={props.state} dispatch={props.dispatch} store={props.store}/>
+            <div className={css.content}>
+              <Route path="/dialogs" render={() => <DialogsContainer store={props.store}/>}/>
+              <Route path="/profile" render={() => <Profile store={props.store}/>}/>
+              <Route path="/users" render={() => <UsersContainer store={props.store}/>}/>
+            </div>
           </div>
         </main>
 
