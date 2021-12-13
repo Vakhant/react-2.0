@@ -1,0 +1,12 @@
+.user_block{
+  background-color: rgba(255,255,255,.3);
+  box-shadow: 0 0 0 rgb(0 0 0 / 15%);
+  transition: .1s;
+  margin-bottom: 20px;
+  border-left: #758EB1 solid 5px;
+  padding: 10px 20px;
+}
+.user_block:hover{
+  background-color: rgba(255,255,255,.5);
+  box-shadow: 0 3px 15px rgb(0 0 0 / 15%);
+}
