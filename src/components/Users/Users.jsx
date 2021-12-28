@@ -1,6 +1,7 @@
 import css from './Users.module.css';
 import avatar from '../../assets/img/avatar.svg'
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Users = (props) => {
 
@@ -21,7 +22,11 @@ const Users = (props) => {
       </div>
       {
         props.users.map( u => <div className={css.user_block} key={u.id}>
-            <div className={css.user_logo}><img src={u.photos.small != null ? u.photos.small : avatar} alt="" /></div>
+            <div className={css.user_logo}>
+              <NavLink to={'/profile/' + u.id}>
+              <img src={u.photos.small != null ? u.photos.small : avatar} alt="" />
+              </NavLink>
+            </div>
             <div className="user_full_name">
               {u.name}
             </div>
