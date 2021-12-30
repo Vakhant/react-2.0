@@ -13,10 +13,12 @@ const ProfileInfo = (props) => {
 }
 
 const Profile = (props) => {
+  if(!props.profile){
+    return <Preloader/>
+  }
     return (
       <>
-      {console.log(props)}
-      {props.profile == null ? <Preloader/> : <ProfileInfo profile={props.profile}/>}
+      <ProfileInfo profile={props.profile}/>
       <MyPostsContainer store={props.store}/>
       </>
     );
