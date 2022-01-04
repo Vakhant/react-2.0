@@ -1,17 +1,17 @@
 import css from './App.module.css';
-import Header from './components/Header/Header';
 import Aside from './components/Aside/Aside';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import { Route } from 'react-router';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
 
 const App = (props) => {
   return (
 
     <div className="App">
 
-      <Header/>
+      <HeaderContainer/>
 
         <main>
           <div className="wrap">
