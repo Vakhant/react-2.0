@@ -1,3 +1,4 @@
+import { Redirect } from 'react-router-dom';
 import DialogNavBlock from './DialogName/DialogNavBlock';
 import css from './Dialogs.module.css';
 import Message from './Message/Message';
@@ -15,6 +16,8 @@ const Dialogs = (props) => {
     let body = e.target.value;
     props.onNewMessageChange(body);
   }
+
+
   return (
     <div className={css.dialogs}>
       <div className={css.dialogs_list}>
