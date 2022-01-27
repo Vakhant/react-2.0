@@ -16,7 +16,7 @@ const ProfileInfo = (props) => {
 class ProfileStatus extends React.Component{
   state = {
     editMode: false,
-    status: 'fdfd'
+    status: this.props.status
   }
 
   activateEditMode = () => {
@@ -29,16 +29,37 @@ class ProfileStatus extends React.Component{
     this.setState({
       editMode: false
     })
+    this.props.updateStatus(this.state.status)
+  }
+  // onStatusChange = (val) => {
+  //   this.setState({
+  //     status: val
+  //   })
+  // }
+
+  onStatusChange = (e) => {
+    this.setState({
+      status: e.currentTarget.value
+    })
   }
 
+  componentDidUpdate(prevProps, prevState){
+    if(prevProps.status !== this.props.status){
+      this.setState({
+        status: this.props.status
+      })
+    }
+    console.log('componentDidUpdate');
+  }
   render(){
+    console.log('render');
     return (
       <div>
         {!this.state.editMode &&
-        <div onClick={this.activateEditMode.bind(this)}>{this.state.status}</div>
+        <div onClick={this.activateEditMode.bind(this)}>{this.props.status || "Добавить статус"}</div>
         }
         {this.state.editMode &&
-        <div autoFocus={true} onBlur={this.deactivateEditMode.bind(this)}><input value={this.state.status} type="text" /></div>
+          <input onChange={this.onStatusChange} onBlur={this.deactivateEditMode.bind(this)} value={this.state.status} type="text" />
         }
       </div>
     )
@@ -52,7 +73,7 @@ const Profile = (props) => {
     return (
       <>
       <ProfileInfo profile={props.profile}/>
-      <ProfileStatus/>
+      <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
       <MyPostsContainer store={props.store}/>
       </>
     );
