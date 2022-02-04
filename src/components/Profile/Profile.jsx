@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Preloader from '../common/Preloader/Preloader';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import css from './Profile.module.css';
@@ -13,57 +13,30 @@ const ProfileInfo = (props) => {
   )
 }
 
-class ProfileStatus extends React.Component{
-  state = {
-    editMode: false,
-    status: this.props.status
-  }
+const ProfileStatus = (props) => {
 
-  activateEditMode = () => {
-    this.setState({
-      editMode: true
-    })
-  }
+  const [editMode, setEditMode] = useState(false);
+  const [status, setStatus]     = useState(props.status);
 
-  deactivateEditMode = () => {
-    this.setState({
-      editMode: false
-    })
-    this.props.updateStatus(this.state.status)
-  }
-  // onStatusChange = (val) => {
-  //   this.setState({
-  //     status: val
-  //   })
-  // }
+  const activateEditMode = () => setEditMode(true)
 
-  onStatusChange = (e) => {
-    this.setState({
-      status: e.currentTarget.value
-    })
+  const deactivateEditMode = () => {
+    setEditMode(false);
+    props.updateStatus(status);
   }
-
-  componentDidUpdate(prevProps, prevState){
-    if(prevProps.status !== this.props.status){
-      this.setState({
-        status: this.props.status
-      })
-    }
-    console.log('componentDidUpdate');
-  }
-  render(){
-    console.log('render');
+  
+  const onStatusChange = (e) => setStatus(e.currentTarget.value)
+  
     return (
       <div>
-        {!this.state.editMode &&
-        <div onClick={this.activateEditMode.bind(this)}>{this.props.status || "Добавить статус"}</div>
+        {!editMode &&
+        <div onClick={activateEditMode}>{props.status || "Добавить статус"}</div>
         }
-        {this.state.editMode &&
-          <input onChange={this.onStatusChange} onBlur={this.deactivateEditMode.bind(this)} value={this.state.status} type="text" />
+        {editMode &&
+          <input onChange={onStatusChange} onBlur={deactivateEditMode} value={status} type="text" />
         }
       </div>
     )
-  }
 }
 
 const Profile = (props) => {
