@@ -7,25 +7,24 @@ import { Input } from '../common/FormsControls/FormsControls';
 import { login } from './../../redux/auth-reducer';
 
 
-const LoginForm = (props) => {
-    return <form onSubmit={props.handleSubmit}>
+const LoginForm = ({handleSubmit, error}) => {
+    return <form onSubmit={handleSubmit}>
             <Field validate={[requiredField]} component={Input} name={'email'} type="text" placeholder="Email"/>
             <Field validate={[requiredField]} component={Input} name={'password'} type="text" placeholder="Password"/>
             <Field component={Input} name={'rememberMe'} type="checkbox" placeholder=""/><label htmlFor="">remember me</label>
-            {props.error && <div>{props.error}</div>}
+            {error && <div>{error}</div>}
             <button>Login</button>
         </form>
 }
 
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
-const Login = (props) => {
+const Login = ({login, isAuth}) => {
     const onSubmit = (formData) => {
-        console.log(formData);
-        props.login(formData.email, formData.password, formData.rememberMe)
+        login(formData.email, formData.password, formData.rememberMe)
     }
 
-    if(props.isAuth){
+    if(isAuth){
         return <Redirect to={'/profile'}/>
     }
 

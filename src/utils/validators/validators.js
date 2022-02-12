@@ -6,7 +6,6 @@ export const requiredField = value => {
 
 //call inside variable(let, const) outside the validate={} attr
 export const maxLengthCreator = (maxLength) => (value) => {
-    console.log(value);
     if (value.length > maxLength) return `Max length is ${maxLength}`;
     return undefined;
 }

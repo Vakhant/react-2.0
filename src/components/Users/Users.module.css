@@ -13,9 +13,3 @@
 .user_logo{
   max-width: 100px;
 }
-.selectedPage{
-  font-weight: bold;
-}
-.page_number{
-  cursor: pointer;
-}

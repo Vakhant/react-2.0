@@ -30,7 +30,6 @@ let store = {
         aside: {}
     },
     _callSubscriber(){
-        console.log("State changed");
     },
     getState(){
         return this._state;
