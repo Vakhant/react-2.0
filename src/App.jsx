@@ -1,17 +1,18 @@
 import React from 'react';
-import css from './App.module.css';
-import Aside from './components/Aside/Aside';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import { Route } from 'react-router';
-import UsersContainer from './components/Users/UsersContainer';
-import ProfileContainer from './components/Profile/ProfileContainer';
-import HeaderContainer from './components/Header/HeaderContainer';
-import Login from './components/Login/Login';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import { compose } from 'redux';
 import { initializeApp } from './redux/app-reducer';
+import { Provider, connect } from 'react-redux';
+import store from './redux/redux-store';
+import css from './App.module.css';
 import Preloader from './components/common/Preloader/Preloader';
-import { connect } from 'react-redux';
+import Aside from './components/Aside/Aside';
+import Login from './components/Login/Login';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
+import UsersContainer from './components/Users/UsersContainer';
+import ProfileContainer from './components/Profile/ProfileContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
 
 class App extends React.Component {
   componentDidMount(){
@@ -50,7 +51,17 @@ const mapStateToProps = (state) => ({
   initialized: state.app.initialized
 })
 
-export default compose(
+let AppConteiner = compose(
     withRouter,
     connect(mapStateToProps, {initializeApp})
   ) (App)
+
+let AppWrap = (props) => {
+  return <BrowserRouter>
+        <Provider store={store}>
+            <AppConteiner/>
+        </Provider>
+  </BrowserRouter>
+}
+
+export default AppWrap;
