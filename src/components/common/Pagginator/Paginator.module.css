@@ -1,6 +1,10 @@
-.selectedPage{
+.selected_page{
   font-weight: bold;
 }
 .page_number{
   cursor: pointer;
+  padding: 2px;
+}
+.paginator{
+  background-color: #fff;
 }
