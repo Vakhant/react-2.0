@@ -4,6 +4,7 @@ export const updateObjectInArray = (items, itemId, objPropName, newObjProps) => 
         if(u[objPropName] === itemId){
             return {...u, ...newObjProps}
         }
+        console.log("sdf");
         return u;
     })
 }

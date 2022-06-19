@@ -1,7 +1,13 @@
 import logo from '../../../../../src/assets/img/avatar.svg';
 import css from './Post.module.css';
 
-const Post = (props) => {
+type PropsT = {
+  id: number
+  message: string
+  likeCounts: number
+}
+
+const Post:React.FC<PropsT> = (props) => {
   return (
         <div className={css.post}>
             <div className="avatar">

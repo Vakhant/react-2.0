@@ -1,16 +1,23 @@
-import { reduxForm } from "redux-form";
+import { reduxForm, InjectedFormProps } from 'redux-form';
 import { Field } from "redux-form"
-import { maxLengthCreator, requiredField } from "../../utils/validators/validators";
 import { Input, Textarea } from "../common/FormsControls/FormsControls"
 import css from './Profile.module.css';
+import { FC } from 'react';
+import { ProfileType } from '../../types/types';
 
-const ProfileDataForm = ({handleSubmit, ...props}) => {
+type PropsT = {
+    deactivateEditMode: ()=>void
+    profile: ProfileType
+}
+
+const ProfileDataForm: FC<InjectedFormProps<ProfileType,PropsT> & PropsT> = 
+({handleSubmit, deactivateEditMode, error, profile}) => {
     return (<>
-        <button onClick={props.deactivateEditMode}>&larr; return</button>
+        <button onClick={deactivateEditMode}>&larr; return</button>
         <form onSubmit={handleSubmit}>
             <button>save</button>
 
-            {props.error && <div>{props.error}</div>}
+            {error && <div>{error}</div>}
 
             <div><b>Full name:</b>
                 <Field component={Input} name={'fullName'} type="text" placeholder="Full name"/>
@@ -29,7 +36,7 @@ const ProfileDataForm = ({handleSubmit, ...props}) => {
             </div>
             <div>
                 <b>Contacts:</b>
-             {Object.keys(props.profile.contacts).map(key =>
+             {Object.keys(profile.contacts).map(key =>
                 <div key={key}><b>{key}: </b> 
                     <Field component={'input'} name={`contacts.${key}`} type="text" placeholder={key}/>
                 </div>)}
@@ -39,6 +46,6 @@ const ProfileDataForm = ({handleSubmit, ...props}) => {
     )
   }
 
-  const ProfileDataFormReduxForm = reduxForm({form: 'edit-profile'})(ProfileDataForm)
+  const ProfileDataFormReduxForm = reduxForm<ProfileType, PropsT>({form: 'edit-profile'})(ProfileDataForm)
 
 export default ProfileDataFormReduxForm

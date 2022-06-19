@@ -2,8 +2,16 @@ import css from './Users.module.css';
 import avatar from '../../assets/img/avatar.svg'
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { UserType } from '../../types/types';
 
-const User = ({user, unfollow, follow, followingInProgress, ...props}) => {
+type PropsType = {
+  user: UserType
+  unfollow: (userId:number) => void
+  follow: (userId:number) => void
+  followingInProgress: Array<number>
+}
+
+const User: React.FC<PropsType> = ({user, unfollow, follow, followingInProgress, ...props}) => {
   return (
     <div className={css.user_block} key={user.id}>
             <div className={css.user_logo}>
@@ -18,12 +26,12 @@ const User = ({user, unfollow, follow, followingInProgress, ...props}) => {
               {user.status}
             </div>
             {user.followed ? 
-            <button disabled={followingInProgress.some(id =>  id === user.id)} onClick={
+            <button disabled={followingInProgress.some(id => id === user.id)} onClick={
               ()=>{
                 unfollow(user.id);
               }
             }>unfollow</button> :
-            <button disabled={followingInProgress.some(id =>  id === user.id)} onClick={
+            <button disabled={followingInProgress.some(id => id === user.id)} onClick={
               ()=>{
                 follow(user.id);
               }

@@ -18,7 +18,7 @@ const LoginForm:FC<InjectedFormProps<LoginFormValuesType,LoginFormOwnPropsType> 
             <Field validate={[requiredField]} component={Input} name={'password'} type="text" placeholder="Password"/>
             <Field component={Input} name={'rememberMe'} type="checkbox" placeholder=""/><label htmlFor="">remember me</label>
             {captchaUrl && <Field validate={[requiredField]} component={Input} name={'captcha'} type="text" placeholder="captcha"/>}
-            {captchaUrl && <img src={captchaUrl}/>}
+            {captchaUrl && <img src={captchaUrl} alt={''}/>}
             {error && <div>{error}</div>}
             <button>Login</button>
         </form>

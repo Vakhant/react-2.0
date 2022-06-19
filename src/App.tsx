@@ -1,6 +1,5 @@
-import React, { Suspense } from 'react';
-import { BrowserRouter, Route, Redirect } from 'react-router-dom';
-import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
+import React, { ComponentType } from 'react';
+import { BrowserRouter, Route, Redirect, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { initializeApp } from './redux/app-reducer';
 import { Provider, connect } from 'react-redux';
@@ -12,12 +11,23 @@ import Login from './components/Login/Login';
 import HeaderContainer from './components/Header/HeaderContainer';
 import { withSuspense } from './hocs/withSuspense';
 import { Switch } from 'react-router-dom';
+import { AppStateType } from './redux/redux-store';
+
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
-class App extends React.Component {
-  catchAllUnhadledErrors = (reason, promise) => {
+type MapPropsType = ReturnType<typeof mapStateToProps>
+type DispatchPropsType = {
+  initializeApp: () => void
+}
+
+const SuspendedDialogs = withSuspense(DialogsContainer)
+const SuspendedProfile = withSuspense(ProfileContainer)
+const SuspendedUsers = withSuspense(UsersContainer)
+
+class App extends React.Component<MapPropsType & DispatchPropsType> {
+  catchAllUnhadledErrors = () => {
     alert("some error occured")
   }
   componentDidMount(){
@@ -44,12 +54,12 @@ class App extends React.Component {
               <Aside/>
               <div className={css.content}>
                 <Switch>
-                  <Route exact path="/" render={() => {<Redirect to="/profile"/>}}/>
-                  <Route path="/dialogs" render={withSuspense(DialogsContainer)}/>
-                  <Route path="/profile/:userId?" render={withSuspense(ProfileContainer)}/>
-                  <Route path="/users" render={<UsersContainer pageTitle={"Users"}/>}/>
+                  <Route exact path="/" render={():any => {<Redirect to="/profile"/>}}/>
+                  <Route path="/dialogs" render={() => <SuspendedDialogs/>}/>
+                  <Route path="/profile/:userId?" render={() => <SuspendedProfile/>}/>
+                  <Route path="/users" render={() => <SuspendedUsers pageTitle={"Users"}/>}/>
                   <Route path="/login" render={withSuspense(Login)}/>
-                  <Route path="*" render={() => {<div>404 not found</div>}}/>
+                  <Route path="*" render={():any => {<div>404 not found</div>}}/>
                 </Switch>
               </div>
             </div>
@@ -60,16 +70,16 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType) => ({
   initialized: state.app.initialized
 })
 
-let AppConteiner = compose(
+let AppConteiner = compose<ComponentType>(
     withRouter,
     connect(mapStateToProps, {initializeApp})
   ) (App)
 
-let AppWrap = (props) => {
+let AppWrap: React.FC = () => {
   return <BrowserRouter>
         <Provider store={store}>
             <AppConteiner/>

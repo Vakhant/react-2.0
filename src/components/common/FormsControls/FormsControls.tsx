@@ -1,5 +1,5 @@
 import css from './FormsControls.module.css'
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import { WrappedFieldProps } from 'redux-form';
 
 export const Textarea: FC<WrappedFieldProps> = ({input, meta: {touched, error}, ...props}) => {

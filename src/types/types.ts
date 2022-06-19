@@ -20,6 +20,7 @@ export type ProfileType = {
     fullName: string
     contacts: ContactsType
     photos: PhotosType
+    aboutMe: string
 }
 export type PostType = {
     id: number
@@ -32,12 +33,4 @@ export type UserType = {
     "photos": PhotosType
     "status": null,
     "followed": boolean
-}
-
-export enum ResultCodeEnum {
-    Success = 0,
-    Error = 1
-}
-export enum CaptchaResultCodeEnum {
-    CaptchaIsRequired = 10
 }
