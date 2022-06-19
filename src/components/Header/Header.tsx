@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/img/logo.svg';
+import { DispatchPropsT, MapPropsType } from './HeaderContainer';
 
-const Header = (props) => {
+
+const Header: React.FC<MapPropsType & DispatchPropsT> = (props) => {
   return (
       <header>
         <div className="wrap">

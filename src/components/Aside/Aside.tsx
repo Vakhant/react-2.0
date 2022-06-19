@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import css from './Aside.module.css';
 
-const Aside = () => {
+const Aside:React.FC = () => {
   return (
     <aside>
       <nav>
