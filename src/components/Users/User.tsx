@@ -3,6 +3,7 @@ import avatar from '../../assets/img/avatar.svg'
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { UserType } from '../../types/types';
+import { FilterT } from '../../redux/users-reducer';
 
 type PropsType = {
   user: UserType
