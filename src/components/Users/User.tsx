@@ -1,9 +1,10 @@
 import css from './Users.module.css';
 import avatar from '../../assets/img/avatar.svg'
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { UserType } from '../../types/types';
 import { FilterT } from '../../redux/users-reducer';
+import { useSelector } from 'react-redux';
 
 type PropsType = {
   user: UserType
@@ -13,6 +14,8 @@ type PropsType = {
 }
 
 const User: React.FC<PropsType> = ({user, unfollow, follow, followingInProgress, ...props}) => {
+  
+
   return (
     <div className={css.user_block} key={user.id}>
             <div className={css.user_logo}>

@@ -1,12 +1,16 @@
 import { createSelector } from "reselect"
 
 
-export const selectUsers         = state => state.usersPage.users
-export const users               = state => selectUsers(state).filter(u=>true)
-export const pageSize            = state => state.usersPage.pageSize
-export const totalUsersCount     = state => state.usersPage.totalUsersCount
-export const currentPage         = state => state.usersPage.currentPage
-export const isFetching          = state => state.usersPage.isFetching
-export const followingInProgress = state => state.usersPage.followingInProgres
+export const getSelectUsers         = state => state.usersPage.users
+export const getPageSize            = state => state.usersPage.pageSize
+export const getTotalUsersCount     = state => state.usersPage.totalUsersCount
+export const getCurrentPage         = state => state.usersPage.currentPage
+export const getIsFetching          = state => state.usersPage.isFetching
+export const getFollowingInProgress = state => state.usersPage.followingInProgress
+export const getFilter              = state => state.usersPage.filter
+
+export const requestUsers           = state => state.usersPage.filter(u=>true)
+
 //for hard selectors
-export const usersSuperSelector = createSelector(selectUsers, pageSize, users => users(state).filter(u=>true)) //example
+// export const usersSuperSelector = 
+// createSelector(selectUsers, pageSize, users => users(state).filter(u=>true)) example
