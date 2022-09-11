@@ -9,9 +9,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getIsFetching, getCurrentPage, getFilter, getFollowingInProgress, getPageSize, getSelectUsers, getTotalUsersCount, requestUsers,} from '../../redux/users-selectors';
 import { useEffect } from 'react';
 import { UserType } from '../../types/types';
+import * as queryString from 'querystring'
+import { useHistory } from 'react-router-dom';
 
 type PropsTypes = {
 }
+
+type QuertParamsType = {term?: string; page?:string; friend?:string}
 
 const UsersList: React.FC<PropsTypes> = (props) => {
   
@@ -24,10 +28,47 @@ const UsersList: React.FC<PropsTypes> = (props) => {
   const filter = useSelector(getFilter)
 
   const dispatch = useDispatch()
+  const history = useHistory()
   
   useEffect(()=>{
-    dispatch(getUsers(currentPage, pageSize, filter));
+    const queryString = require('querystring');
+    let parsed = queryString.parse(history.location.search.substr(1)) as QuertParamsType
+    
+
+    let actualPage = currentPage
+    let actualFilter = filter
+
+    if(!!parsed.page) actualPage = Number(parsed.page)
+
+    if(!!parsed.term) actualFilter = {...actualFilter, term: parsed.term as string}
+
+    switch(parsed.friend){
+      case "null":
+        actualFilter = {...actualFilter, friend: null}
+        break
+      case 'true':
+        actualFilter = {...actualFilter, friend: true}
+        break
+      case 'false':
+        actualFilter = {...actualFilter, friend: false}
+        break
+    }
+    
+    dispatch(getUsers(actualPage, pageSize, actualFilter));
   },[])
+  
+  useEffect(()=>{
+    
+    const query: QuertParamsType = {}
+    if(!!filter.term) query.term = filter.term 
+    if(filter.friend !== null) query.friend = String(filter.friend) 
+    if(currentPage !== 1) query.page = String(currentPage)
+
+    history.push({
+      pathname: "/users",
+      search: `?term=${filter.term}&friend=${filter.friend}&page=${currentPage}`
+    });
+  },[filter, currentPage])
 
   const eunfollow = (userId:number) => {
     dispatch(unfollow(userId))
@@ -42,6 +83,8 @@ const UsersList: React.FC<PropsTypes> = (props) => {
   }
 
   const onFillterChanged = (filter: FilterT) => {
+    console.log(filter);
+    
     dispatch(getUsers(1, pageSize, filter));
   }
 
