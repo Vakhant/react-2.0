@@ -16,6 +16,7 @@ import { AppStateType } from './redux/redux-store';
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 const UsersPage = React.lazy(() => import('./components/Users/UsersContainer'));
+const ChatPage = React.lazy(() => import('./pages/Chat/ChatPage'));
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
 type DispatchPropsType = {
@@ -59,6 +60,7 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
                   <Route path="/profile/:userId?" render={() => <SuspendedProfile/>}/>
                   <Route path="/users" render={() => <SuspendedUsers pageTitle={"Users"}/>}/>
                   <Route path="/login" render={withSuspense(Login)}/>
+                  <Route path="/chat" render={withSuspense(ChatPage)}/>
                   <Route path="*" render={():any => {<div>404 not found</div>}}/>
                 </Switch>
               </div>
